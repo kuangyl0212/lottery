@@ -17,15 +17,15 @@ import java.util.stream.Collectors;
 @Service(value = "drawExec")
 public class DrawExecImpl extends AbstractDrawBase {
     @Override
-    protected List<Long> queryExcludeAwardsIds(Long strategyId) {
+    protected List<String> queryExcludeAwardsIds(Long strategyId) {
 
         List<StrategyDetail> excludeAwards = strategyRepository.queryNonStockAwardIds(strategyId);
 
-        return excludeAwards.stream().map(StrategyDetail::getAwardId).collect(Collectors.toList());
+        return excludeAwards.stream().map(it -> it.getAwardId().toString()).collect(Collectors.toList());
     }
 
     @Override
-    protected String drawAlgorithm(Long strategyId, IDrawAlgorithm drawAlgorithm, List<Long> excludeAwardsIds) {
+    protected String drawAlgorithm(Long strategyId, IDrawAlgorithm drawAlgorithm, List<String> excludeAwardsIds) {
         return drawAlgorithm.drawRandom(strategyId, excludeAwardsIds);
     }
 }

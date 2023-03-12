@@ -1,11 +1,14 @@
 package cn.forest.lottery.domain.strategy.service.draw;
 
 import cn.forest.lottery.domain.strategy.model.StrategyAggregate;
+import cn.forest.lottery.domain.strategy.model.vo.AwardRateInfo;
 import cn.forest.lottery.domain.strategy.service.algorithm.IDrawAlgorithm;
+import cn.forest.lottery.infrastructure.po.Strategy;
 import cn.forest.lottery.infrastructure.po.StrategyDetail;
 import cn.forest.lottery.rpc.req.DrawReq;
 import cn.forest.lottery.rpc.res.DrawResult;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,9 +23,11 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
         // 1. 获取抽奖策略
         Long strategyId = req.getStrategyId();
         StrategyAggregate strategyAggregate = super.queryStrategyAggregateById(strategyId);
-        // 2.
+        Strategy strategy = strategyAggregate.getStrategy();
+        // 2.检查抽奖策略是否已经加载到内存
+        this.checkAndInitRateData(req.getStrategyId(), strategy.getStrategyMode(), strategyAggregate.getDetails());
         // 3. 获取不在抽奖范围内的奖品列表
-        List<Long> excludeAwardIds = this.queryExcludeAwardsIds(strategyId);
+        List<String> excludeAwardIds = this.queryExcludeAwardsIds(strategyId);
         // 4. 执行抽奖算法
 
          String awardId = this.drawAlgorithm(strategyId, drawAlgorithmMap.get(strategyAggregate.getStrategyMode()), excludeAwardIds);
@@ -31,12 +36,27 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
         return res;
     }
 
+    private void checkAndInitRateData(Long strategyId, Integer strategyMode, List<StrategyDetail> strategyDetails) {
+        if (strategyMode == 1) {
+            return;
+        }
+        IDrawAlgorithm drawAlgorithm = drawAlgorithmMap.get(strategyMode);
+
+
+        List<AwardRateInfo> awardRateInfoList = new ArrayList<>(strategyDetails.size());
+        for (StrategyDetail strategyDetail: strategyDetails) {
+            awardRateInfoList.add(new AwardRateInfo(strategyDetail.getAwardId(), strategyDetail.getAwardRate()));
+        }
+
+        drawAlgorithm.initRateTuple(strategyId, awardRateInfoList);
+    }
+
     /**
      * 查询需要排除的奖品id列表
      * @param strategyId 抽奖策略id
      * @return 排除的奖品列表
      */
-    protected abstract List<Long> queryExcludeAwardsIds(Long strategyId);
+    protected abstract List<String> queryExcludeAwardsIds(Long strategyId);
 
     /**
      * 执行抽奖算法
@@ -45,5 +65,5 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
      * @param excludeAwardsIds 需要排除的奖品列表
      * @return 抽奖结果
      */
-    protected abstract String drawAlgorithm(Long strategyId, IDrawAlgorithm drawAlgorithm, List<Long> excludeAwardsIds);
+    protected abstract String drawAlgorithm(Long strategyId, IDrawAlgorithm drawAlgorithm, List<String> excludeAwardsIds);
 }

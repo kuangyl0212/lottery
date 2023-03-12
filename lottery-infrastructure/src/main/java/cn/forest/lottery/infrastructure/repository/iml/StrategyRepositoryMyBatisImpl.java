@@ -30,7 +30,7 @@ public class StrategyRepositoryMyBatisImpl extends ServiceImpl<StrategyDao, Stra
     public List<StrategyDetail> queryNonStockAwardIds(Long strategyId) {
         return strategyDetailRepository.list(Wrappers.lambdaQuery(StrategyDetail.class)
                 .eq(StrategyDetail::getStrategyId, strategyId)
-                .gt(StrategyDetail::getAwardSurplusCount, 0));
+                .eq(StrategyDetail::getAwardSurplusCount, 0));
     }
 
     @Override

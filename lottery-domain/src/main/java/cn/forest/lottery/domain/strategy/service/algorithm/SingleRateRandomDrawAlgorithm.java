@@ -11,7 +11,8 @@ import java.util.List;
 @Component
 public class SingleRateRandomDrawAlgorithm extends BaseAlgorithm implements IDrawAlgorithm {
     @Override
-    public String drawRandom(Long strategyId, List<Long> excludeAwardIds) {
+    public String drawRandom(Long strategyId, List<String> excludeAwardIds) {
+
         return null;
     }
 }
