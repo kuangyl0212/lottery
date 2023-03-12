@@ -1,0 +1,25 @@
+dubbo:
+  application:
+    name: Lottery
+    version: 1.0.0
+  registry:
+    address: N/A #multicast://224.5.6.7:1234
+  protocol:
+    name: dubbo
+    port: 20880
+  scan:
+    base-packages: cn.forest.lottery.rpc
+
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/lottery?useUnicode=true&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+logging:
+  level.org.springframework.boot.autoconfigure: error
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false
