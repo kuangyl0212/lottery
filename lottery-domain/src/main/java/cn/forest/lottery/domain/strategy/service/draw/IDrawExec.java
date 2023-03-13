@@ -1,7 +1,7 @@
 package cn.forest.lottery.domain.strategy.service.draw;
 
-import cn.forest.lottery.rpc.req.DrawReq;
-import cn.forest.lottery.rpc.res.DrawResult;
+import cn.forest.lottery.domain.strategy.model.DrawReq;
+import cn.forest.lottery.domain.strategy.model.DrawResult;
 
 /**
  * @description:

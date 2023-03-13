@@ -13,4 +13,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ActivityRepository extends IService<Activity> {
 
+    boolean updateState(Long activityId, int currentState, int newState);
 }

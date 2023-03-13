@@ -1,4 +1,4 @@
-package cn.forest.lottery.rpc.res;
+package cn.forest.lottery.domain.strategy.model;
 
 import lombok.Data;
 
@@ -11,4 +11,6 @@ import lombok.Data;
 public class DrawResult {
 
     String awardId;
+
+    DrawAwardInfo drawAwardInfo;
 }

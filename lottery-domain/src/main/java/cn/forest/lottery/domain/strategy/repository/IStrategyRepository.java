@@ -22,4 +22,5 @@ public interface IStrategyRepository {
 
     List<StrategyDetail> queryNonStockAwardIds(Long strategyId);
 
+    boolean decreaseStock(Long strategyId, String awardId);
 }

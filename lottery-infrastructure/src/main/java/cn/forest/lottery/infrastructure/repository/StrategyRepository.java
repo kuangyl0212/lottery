@@ -19,4 +19,6 @@ public interface StrategyRepository extends IService<Strategy> {
     List<StrategyDetail> queryNonStockAwardIds(Long strategyId);
 
     Strategy queryByStrategyId(Long strategyId);
+
+    boolean decreaseStock(Long strategyId, String awardId);
 }

@@ -5,6 +5,7 @@ import cn.forest.lottery.infrastructure.dao.StrategyDao;
 import cn.forest.lottery.infrastructure.po.StrategyDetail;
 import cn.forest.lottery.infrastructure.repository.StrategyDetailRepository;
 import cn.forest.lottery.infrastructure.repository.StrategyRepository;
+import cn.forest.lottery.infrastructure.util.IncrDecrLambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Component;
@@ -36,5 +37,15 @@ public class StrategyRepositoryMyBatisImpl extends ServiceImpl<StrategyDao, Stra
     @Override
     public Strategy queryByStrategyId(Long strategyId) {
         return getOne(Wrappers.lambdaQuery(Strategy.class).eq(Strategy::getStrategyId, strategyId));
+    }
+
+    @Override
+    public boolean decreaseStock(Long strategyId, String awardId) {
+        IncrDecrLambdaUpdateWrapper<StrategyDetail> updateWrapper = new IncrDecrLambdaUpdateWrapper<>(StrategyDetail.class);
+        updateWrapper
+                .descField(StrategyDetail::getAwardSurplusCount, 1)
+                .eq(StrategyDetail::getStrategyId, strategyId)
+                .eq(StrategyDetail::getAwardId, awardId);
+        return strategyDetailRepository.update(updateWrapper);
     }
 }

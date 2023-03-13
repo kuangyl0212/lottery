@@ -1,8 +1,8 @@
-package cn.forest.lottery.domain.strategy;
+package cn.forest.lottery.domain;
 
 import cn.forest.lottery.domain.strategy.service.draw.IDrawExec;
-import cn.forest.lottery.rpc.req.DrawReq;
-import cn.forest.lottery.rpc.res.DrawResult;
+import cn.forest.lottery.domain.strategy.model.DrawReq;
+import cn.forest.lottery.domain.strategy.model.DrawResult;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
@@ -31,7 +31,7 @@ public class LotteryDomainApplication {
     @GetMapping("/draw")
     public DrawResult draw() {
         DrawReq req = new DrawReq();
-        req.setStrategyId(1001L);
+        req.setStrategyId(10001L);
         return drawExec.doDrawExec(req);
     }
 }

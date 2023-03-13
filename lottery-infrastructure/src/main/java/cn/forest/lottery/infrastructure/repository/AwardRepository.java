@@ -13,4 +13,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface AwardRepository extends IService<Award> {
 
+    Award queryByAwardId(Long awardId);
 }

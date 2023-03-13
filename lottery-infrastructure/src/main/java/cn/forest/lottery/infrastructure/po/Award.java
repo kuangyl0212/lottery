@@ -37,10 +37,10 @@ public class Award implements Serializable {
      */
     private Integer awardType;
 
-    /**
-     * 奖品数量
-     */
-    private Integer awardCount;
+//    /**
+//     * 奖品数量
+//     */
+//    private Integer awardCount;
 
     /**
      * 奖品名称

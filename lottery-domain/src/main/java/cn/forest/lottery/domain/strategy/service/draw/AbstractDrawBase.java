@@ -5,8 +5,8 @@ import cn.forest.lottery.domain.strategy.model.vo.AwardRateInfo;
 import cn.forest.lottery.domain.strategy.service.algorithm.IDrawAlgorithm;
 import cn.forest.lottery.infrastructure.po.Strategy;
 import cn.forest.lottery.infrastructure.po.StrategyDetail;
-import cn.forest.lottery.rpc.req.DrawReq;
-import cn.forest.lottery.rpc.res.DrawResult;
+import cn.forest.lottery.domain.strategy.model.DrawReq;
+import cn.forest.lottery.domain.strategy.model.DrawResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +23,10 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
         // 1. 获取抽奖策略
         Long strategyId = req.getStrategyId();
         StrategyAggregate strategyAggregate = super.queryStrategyAggregateById(strategyId);
+
+        if (strategyAggregate.getStrategy() == null) {
+            return new DrawResult();
+        }
         Strategy strategy = strategyAggregate.getStrategy();
         // 2.检查抽奖策略是否已经加载到内存
         this.checkAndInitRateData(req.getStrategyId(), strategy.getStrategyMode(), strategyAggregate.getDetails());
@@ -31,6 +35,8 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
         // 4. 执行抽奖算法
 
          String awardId = this.drawAlgorithm(strategyId, drawAlgorithmMap.get(strategyAggregate.getStrategyMode()), excludeAwardIds);
+         // 5. 扣减库存
+        boolean isSuccess = strategyRepository.decreaseStock(strategyId, awardId);
         DrawResult res = new DrawResult();
         res.setAwardId(awardId);
         return res;

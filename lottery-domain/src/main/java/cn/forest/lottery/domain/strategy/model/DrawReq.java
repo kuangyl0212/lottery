@@ -1,4 +1,4 @@
-package cn.forest.lottery.rpc.req;
+package cn.forest.lottery.domain.strategy.model;
 
 import lombok.Data;
 

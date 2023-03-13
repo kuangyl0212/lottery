@@ -45,4 +45,9 @@ public class StrategyRepositoryImpl implements IStrategyRepository {
     public List<StrategyDetail> queryNonStockAwardIds(Long strategyId) {
         return strategyRepository.queryNonStockAwardIds(strategyId);
     }
+
+    @Override
+    public boolean decreaseStock(Long strategyId, String awardId) {
+        return strategyRepository.decreaseStock(strategyId, awardId);
+    }
 }

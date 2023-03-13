@@ -3,10 +3,9 @@ package cn.forest.lottery.infrastructure.repository.iml;
 import cn.forest.lottery.infrastructure.po.Award;
 import cn.forest.lottery.infrastructure.dao.AwardDao;
 import cn.forest.lottery.infrastructure.repository.AwardRepository;
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 /**
  * <p>
@@ -17,6 +16,10 @@ import org.springframework.stereotype.Service;
  * @since 2023-03-12
  */
 @Component
-public class AwardRepositoryImpl extends ServiceImpl<AwardDao, Award> implements AwardRepository {
+public class AwardRepositoryMybatisImpl extends ServiceImpl<AwardDao, Award> implements AwardRepository {
 
+    @Override
+    public Award queryByAwardId(Long awardId) {
+        return getOne(Wrappers.lambdaQuery(Award.class).eq(Award::getAwardId, awardId));
+    }
 }

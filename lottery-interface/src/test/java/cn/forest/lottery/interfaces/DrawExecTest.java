@@ -1,7 +1,7 @@
 package cn.forest.lottery.interfaces;
 
 import cn.forest.lottery.domain.strategy.service.draw.IDrawExec;
-import cn.forest.lottery.rpc.req.DrawReq;
+import cn.forest.lottery.domain.strategy.model.DrawReq;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,7 +25,7 @@ class DrawExecTest {
     @org.junit.jupiter.api.Test
     void queryExcludeAwardsIds() {
         DrawReq req = new DrawReq();
-        req.setStrategyId(1001L);
+        req.setStrategyId(10001L);
         log.info(drawExec.doDrawExec(req).toString());
     }
 }
