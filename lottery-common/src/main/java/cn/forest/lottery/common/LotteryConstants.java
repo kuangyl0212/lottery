@@ -10,8 +10,8 @@ public class LotteryConstants {
         /**
          * 优惠券类型奖品
          */
-        CouponGoods(2),
-        PhysicalGoods(3),
+        CouponGoods(0),
+            PhysicalGoods(1),
         ;
 
         private final int code;
@@ -42,6 +42,24 @@ public class LotteryConstants {
 
 
         ActivityState(int i) {
+            code = i;
+        }
+
+        public int getCode() {
+            return code;
+        }
+    }
+    public enum Ids {
+        /**
+         * 雪花算法
+         */
+        SnowFlake(0),
+        ShortCode(1),
+        RandomNumeric(2),
+        ;
+        private final int code;
+
+        Ids(int i) {
             code = i;
         }
 

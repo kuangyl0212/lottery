@@ -20,7 +20,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class ActivityRepositoryImpl extends ServiceImpl<ActivityDao, Activity> implements ActivityRepository {
 
-    @DBRouter(key = "activityId")
     @Override
     public boolean updateState(Long activityId, int currentState, int newState) {
         return this.update(Wrappers.lambdaUpdate(Activity.class)

@@ -1,6 +1,7 @@
-package cn.forest.lottery.domain;
+package cn.forest.lottery.interfaces;
 
 import cn.forest.lottery.common.LotteryConstants;
+import cn.forest.lottery.domain.LotteryDomainApplication;
 import cn.forest.lottery.domain.activity.model.Result;
 import cn.forest.lottery.domain.activity.repository.IActivityRepository;
 import cn.forest.lottery.domain.activity.service.state.IStateHandler;
@@ -10,15 +11,24 @@ import cn.forest.lottery.domain.award.service.goods.IDistributionGoods;
 import cn.forest.lottery.domain.strategy.service.draw.IDrawExec;
 import cn.forest.lottery.domain.strategy.model.DrawReq;
 import cn.forest.lottery.domain.strategy.model.DrawResult;
+import cn.forest.lottery.domain.support.ids.IIdGenerator;
 import cn.forest.lottery.infrastructure.po.Award;
+import cn.forest.lottery.infrastructure.po.UserStrategyExport;
+import cn.forest.lottery.infrastructure.po.UserTakeActivity;
+import cn.forest.lottery.infrastructure.repository.UserStrategyExportRepository;
+import cn.forest.lottery.infrastructure.repository.UserTakeActivityRepository;
 import cn.forest.util.dbrouter.DbRouterConfig;
+import com.github.javafaker.Faker;
+import com.github.jsonzou.jmockdata.JMockData;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.mockito.Mockito;
 
 import javax.annotation.Resource;
+import java.util.Map;
 
 /**
  * @description:
@@ -27,8 +37,8 @@ import javax.annotation.Resource;
  */
 @Slf4j
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = LotteryDomainApplication.class)
-class DrawExecTest {
+@SpringBootTest(classes = LotteryInterfaceApplication.class)
+class ApiTest {
 
     @Resource
     private IDrawExec drawExec;
@@ -47,6 +57,15 @@ class DrawExecTest {
 
     @Resource
     private DbRouterConfig dbRouterConfig;
+
+    @Resource
+    private UserTakeActivityRepository userTakeActivityRepository;
+
+    @Resource
+    private UserStrategyExportRepository userStrategyExportRepository;
+
+    @Resource
+    private Map<LotteryConstants.Ids, IIdGenerator> idGenerator;
 
     @org.junit.jupiter.api.Test
     void queryExcludeAwardsIds() {
@@ -83,5 +102,40 @@ class DrawExecTest {
     @Test
     void testDbRouter() {
         log.info(dbRouterConfig.toString());
+        UserTakeActivity userTakeActivity;
+        for (int i = 0; i < 100; i++) {
+            userTakeActivity = JMockData.mock(UserTakeActivity.class);
+
+            try {
+                userTakeActivityRepository.create(userTakeActivity);
+            } catch (Exception ignored) {
+
+            }
+        }
+
     }
+
+    @Test
+    void testDbRouterTable() {
+        log.info(dbRouterConfig.toString());
+        UserStrategyExport userStrategyExport;
+        for (int i = 0; i < 100; i++) {
+            userStrategyExport = JMockData.mock(UserStrategyExport.class);
+
+            try {
+                userStrategyExportRepository.create(userStrategyExport);
+            } catch (Exception ignored) {
+
+            }
+        }
+
+    }
+
+    @Test
+    void testIdGenerator() {
+        log.info(String.valueOf(idGenerator.get(LotteryConstants.Ids.SnowFlake).nextId()));
+        log.info(String.valueOf(idGenerator.get(LotteryConstants.Ids.ShortCode).nextId()));
+        log.info(String.valueOf(idGenerator.get(LotteryConstants.Ids.RandomNumeric).nextId()));
+    }
+
 }

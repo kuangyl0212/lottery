@@ -13,10 +13,32 @@ dubbo:
 spring:
   datasource:
     username: root
-    password: Abc1234!
+    password: root
     url: jdbc:mysql://127.0.0.1:3306/lottery?useUnicode=true&serverTimezone=GMT%2B8
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-logging:
-  level.org.springframework.boot.autoconfigure: error
-
+forest-db-router:
+  enabled: true
+  db-count: 2
+  tb-count: 4
+  router-key: uId
+  default-db: db00
+  db-list: db01, db02
+  db00:
+    username: root
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/lottery?useUnicode=true&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  db01:
+    username: root
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/lottery_01?useUnicode=true&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  db02:
+    username: root
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/lottery_02?useUnicode=true&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
