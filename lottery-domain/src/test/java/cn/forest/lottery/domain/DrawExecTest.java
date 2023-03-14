@@ -11,6 +11,7 @@ import cn.forest.lottery.domain.strategy.service.draw.IDrawExec;
 import cn.forest.lottery.domain.strategy.model.DrawReq;
 import cn.forest.lottery.domain.strategy.model.DrawResult;
 import cn.forest.lottery.infrastructure.po.Award;
+import cn.forest.util.dbrouter.DbRouterConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -44,6 +45,9 @@ class DrawExecTest {
     @Resource
     private IStateHandler stateHandler;
 
+    @Resource
+    private DbRouterConfig dbRouterConfig;
+
     @org.junit.jupiter.api.Test
     void queryExcludeAwardsIds() {
         DrawReq req = new DrawReq();
@@ -74,5 +78,10 @@ class DrawExecTest {
         log.info(res.toString());
         Result res2 = stateHandler.open(100002L, LotteryConstants.ActivityState.CLOSED);
         log.info(res2.toString());
+    }
+
+    @Test
+    void testDbRouter() {
+        log.info(dbRouterConfig.toString());
     }
 }

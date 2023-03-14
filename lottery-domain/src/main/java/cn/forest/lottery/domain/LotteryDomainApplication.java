@@ -6,6 +6,7 @@ import cn.forest.lottery.domain.strategy.model.DrawResult;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,6 +18,7 @@ import javax.annotation.Resource;
  * @date: 2023/3/12
  */
 
+@EnableAspectJAutoProxy
 @RestController
 @SpringBootApplication
 @ComponentScan(basePackages = {"cn.forest.lottery.infrastructure", "cn.forest.lottery.domain"})
