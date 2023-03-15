@@ -68,4 +68,25 @@ public class LotteryConstants {
             return code;
         }
     }
+
+    public enum ResponseCode {
+        SUCCESS(0, "ok"),
+        ;
+
+        private final Integer code;
+        private final String info;
+        ResponseCode(int code, String info) {
+            this.code = code;
+            this.info = info;
+        }
+
+        public Integer getCode() {
+            return code;
+        }
+
+
+        public String getInfo() {
+            return info;
+        }
+    }
 }

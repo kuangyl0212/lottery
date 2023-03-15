@@ -18,7 +18,7 @@ import java.util.List;
 public class MybatisPlusGenerator {
 
     public static void main(String[] args) {
-        DataSourceConfig.Builder ds = new DataSourceConfig.Builder("jdbc:mysql://127.0.0.1:3306/lottery?serverTimezone=GMT%2B8", "root", "root");
+        DataSourceConfig.Builder ds = new DataSourceConfig.Builder("jdbc:mysql://127.0.0.1:3306/lottery?serverTimezone=GMT%2B8", "root", "Abc1234!");
         FastAutoGenerator.create(ds)
                 // 全局配置
                 .globalConfig((scanner, builder) -> builder.author("Forest")
@@ -31,15 +31,18 @@ public class MybatisPlusGenerator {
                         .serviceImpl("repository.iml")
                         .xml("dao.xml"))
                 .templateConfig((scanner, builder) -> builder
-                        .disable(TemplateType.CONTROLLER))
+                        .disable(TemplateType.CONTROLLER)
+                        .disable(TemplateType.SERVICE)
+                        .disable(TemplateType.SERVICEIMPL))
                 // 策略配置
                 .strategyConfig((scanner, builder) -> builder.addInclude(getTables(scanner.apply("请输入表名，多个英文逗号分隔？所有输入 all")))
                         .controllerBuilder().enableRestStyle().enableHyphenStyle()
                         .entityBuilder().enableLombok().addTableFills(
-                                new Column("create_time", FieldFill.INSERT)
+                                new Column("create_time", FieldFill.INSERT),
+                                new Column("update_time", FieldFill.INSERT_UPDATE)
                         )
-                        .serviceBuilder().formatServiceFileName("%sRepository")
-                            .formatServiceImplFileName("%sRepositoryImpl")
+//                        .serviceBuilder().formatServiceFileName("%sRepository")
+//                            .formatServiceImplFileName("%sRepositoryImpl")
                         .mapperBuilder().formatMapperFileName("%sDao")
                         .formatXmlFileName("%sDao")
                         .build())
