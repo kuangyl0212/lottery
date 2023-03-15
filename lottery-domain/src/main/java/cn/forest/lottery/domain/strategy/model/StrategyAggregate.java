@@ -1,7 +1,5 @@
 package cn.forest.lottery.domain.strategy.model;
 
-import cn.forest.lottery.infrastructure.po.Strategy;
-import cn.forest.lottery.infrastructure.po.StrategyDetail;
 import lombok.Data;
 
 import java.util.List;

@@ -1,6 +1,7 @@
 package cn.forest.lottery.infrastructure.dao;
 
-import cn.forest.lottery.infrastructure.po.UserTakeActivity;
+import cn.forest.lottery.infrastructure.po.UserTakeActivityPo;
+import cn.forest.util.dbrouter.annotation.DBRouter;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -11,6 +12,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author Forest
  * @since 2023-03-14
  */
-public interface UserTakeActivityDao extends BaseMapper<UserTakeActivity> {
+public interface UserTakeActivityDao extends BaseMapper<UserTakeActivityPo> {
 
 }

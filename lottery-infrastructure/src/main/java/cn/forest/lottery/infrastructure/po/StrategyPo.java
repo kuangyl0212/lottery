@@ -4,20 +4,24 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * <p>
- * 奖品配置
+ * 策略配置
  * </p>
  *
  * @author Forest
  * @since 2023-03-12
  */
-@Getter
-@Setter
-public class Award implements Serializable {
+@Data
+@TableName("strategy")
+public class StrategyPo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -28,29 +32,34 @@ public class Award implements Serializable {
     private Long id;
 
     /**
-     * 奖品ID
+     * 策略ID
      */
-    private Long awardId;
+    private Long strategyId;
 
     /**
-     * 奖品类型（文字描述、兑换码、优惠券、实物奖品暂无）
+     * 策略描述
      */
-    private Integer awardType;
-
-//    /**
-//     * 奖品数量
-//     */
-//    private Integer awardCount;
+    private String strategyDesc;
 
     /**
-     * 奖品名称
+     * 策略方式「1:单项概率、2:总体概率」
      */
-    private String awardName;
+    private Integer strategyMode;
 
     /**
-     * 奖品内容「文字描述、Key、码」
+     * 发放奖品方式「1:即时、2:定时[含活动结束]、3:人工」
      */
-    private String awardContent;
+    private Integer grantType;
+
+    /**
+     * 发放奖品时间
+     */
+    private LocalDateTime grantDate;
+
+    /**
+     * 扩展信息
+     */
+    private String extInfo;
 
     /**
      * 创建时间
@@ -58,7 +67,7 @@ public class Award implements Serializable {
     private LocalDateTime createTime;
 
     /**
-     * updateTime
+     * 修改时间
      */
     private LocalDateTime updateTime;
 

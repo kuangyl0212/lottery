@@ -4,6 +4,9 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,9 +18,9 @@ import lombok.Setter;
  * @author Forest
  * @since 2023-03-12
  */
-@Getter
-@Setter
-public class Activity implements Serializable {
+@Data
+@TableName("activity")
+public class ActivityPo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

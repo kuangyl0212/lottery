@@ -3,6 +3,7 @@ package cn.forest.lottery.domain.award.service.factory;
 import cn.forest.lottery.common.LotteryConstants;
 import cn.forest.lottery.domain.award.service.goods.IDistributionGoods;
 import cn.forest.lottery.domain.award.service.goods.impl.CouponGoods;
+import cn.forest.lottery.domain.award.service.goods.impl.OtherGoods;
 import cn.forest.lottery.domain.award.service.goods.impl.PhysicalGoods;
 
 import javax.annotation.PostConstruct;
@@ -22,9 +23,13 @@ public class DistributionServiceFactoryConfig {
     @Resource
     PhysicalGoods physicalGoods;
 
+    @Resource
+    OtherGoods otherGoods;
+
     @PostConstruct
     public void init() {
         distributionServiceMap.put(LotteryConstants.AwardType.CouponGoods.getCode(), couponGoods);
         distributionServiceMap.put(LotteryConstants.AwardType.PhysicalGoods.getCode(), physicalGoods);
+        distributionServiceMap.put(LotteryConstants.AwardType.Other.getCode(), otherGoods);
     }
 }

@@ -1,12 +1,8 @@
 package cn.forest.lottery.domain.strategy.service.draw;
 
-import cn.forest.lottery.domain.strategy.model.StrategyAggregate;
+import cn.forest.lottery.domain.strategy.model.*;
 import cn.forest.lottery.domain.strategy.model.vo.AwardRateInfo;
 import cn.forest.lottery.domain.strategy.service.algorithm.IDrawAlgorithm;
-import cn.forest.lottery.infrastructure.po.Strategy;
-import cn.forest.lottery.infrastructure.po.StrategyDetail;
-import cn.forest.lottery.domain.strategy.model.DrawReq;
-import cn.forest.lottery.domain.strategy.model.DrawResult;
 
 import java.util.ArrayList;
 import java.util.List;

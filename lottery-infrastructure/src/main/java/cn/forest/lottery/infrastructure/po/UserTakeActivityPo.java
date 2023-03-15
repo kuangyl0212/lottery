@@ -17,7 +17,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @TableName("user_take_activity")
-public class UserTakeActivity implements Serializable {
+public class UserTakeActivityPo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

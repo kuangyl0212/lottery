@@ -1,8 +1,8 @@
 package cn.forest.lottery.domain.strategy.service.draw;
 
+import cn.forest.lottery.domain.award.model.Award;
 import cn.forest.lottery.domain.strategy.model.StrategyAggregate;
 import cn.forest.lottery.domain.strategy.repository.IStrategyRepository;
-import cn.forest.lottery.infrastructure.po.Award;
 
 import javax.annotation.Resource;
 

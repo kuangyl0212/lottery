@@ -1,32 +1,15 @@
-package cn.forest.lottery.infrastructure.po;
+package cn.forest.lottery.domain.strategy.model;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import java.io.Serializable;
+import lombok.Data;
+
 import java.time.LocalDateTime;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
 /**
- * <p>
- * 策略配置
- * </p>
- *
  * @author Forest
- * @since 2023-03-12
+ * @date 2023/3/15 9:55
  */
-@Getter
-@Setter
-@ToString
-public class Strategy implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    /**
-     * 自增ID
-     */
-    @TableId(value = "id", type = IdType.AUTO)
+@Data
+public class Strategy {
     private Long id;
 
     /**
@@ -68,6 +51,4 @@ public class Strategy implements Serializable {
      * 修改时间
      */
     private LocalDateTime updateTime;
-
-
 }

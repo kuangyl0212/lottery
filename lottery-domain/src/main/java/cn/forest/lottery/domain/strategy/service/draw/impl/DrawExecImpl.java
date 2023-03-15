@@ -1,8 +1,8 @@
 package cn.forest.lottery.domain.strategy.service.draw.impl;
 
+import cn.forest.lottery.domain.strategy.model.StrategyDetail;
 import cn.forest.lottery.domain.strategy.service.algorithm.IDrawAlgorithm;
 import cn.forest.lottery.domain.strategy.service.draw.AbstractDrawBase;
-import cn.forest.lottery.infrastructure.po.StrategyDetail;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

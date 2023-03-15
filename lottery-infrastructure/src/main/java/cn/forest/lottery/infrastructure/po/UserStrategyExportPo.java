@@ -21,7 +21,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @TableName("user_strategy_export")
-public class UserStrategyExport implements Serializable {
+public class UserStrategyExportPo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -105,6 +105,7 @@ public class UserStrategyExport implements Serializable {
     /**
      * 更新时间
      */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updateTime;
 
 

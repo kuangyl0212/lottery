@@ -1,6 +1,7 @@
 package cn.forest.lottery.infrastructure.dao;
 
-import cn.forest.lottery.infrastructure.po.UserStrategyExport;
+import cn.forest.lottery.infrastructure.po.UserStrategyExportPo;
+import cn.forest.util.dbrouter.annotation.DBRouter;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -11,6 +12,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author Forest
  * @since 2023-03-14
  */
-public interface UserStrategyExportDao extends BaseMapper<UserStrategyExport> {
+public interface UserStrategyExportDao extends BaseMapper<UserStrategyExportPo> {
 
 }

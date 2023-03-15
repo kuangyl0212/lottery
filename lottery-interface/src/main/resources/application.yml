@@ -18,7 +18,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 forest-db-router:
-  enabled: true
+  enabled: false
   db-count: 2
   tb-count: 4
   router-key: uId

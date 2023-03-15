@@ -1,6 +1,6 @@
 package cn.forest.lottery.infrastructure.dao;
 
-import cn.forest.lottery.infrastructure.po.StrategyDetail;
+import cn.forest.lottery.infrastructure.po.StrategyDetailPo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author Forest
  * @since 2023-03-12
  */
-public interface StrategyDetailDao extends BaseMapper<StrategyDetail> {
+public interface StrategyDetailDao extends BaseMapper<StrategyDetailPo> {
 
 }

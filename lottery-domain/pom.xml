@@ -25,12 +25,6 @@
 
         <dependency>
             <groupId>cn.forest.lottery</groupId>
-            <artifactId>lottery-infrastructure</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>cn.forest.lottery</groupId>
             <artifactId>lottery-common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
@@ -38,6 +32,10 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>5.5.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
         </dependency>
 
     </dependencies>

@@ -1,6 +1,6 @@
 package cn.forest.lottery.domain.award.repository;
 
-import cn.forest.lottery.infrastructure.po.Award;
+import cn.forest.lottery.domain.award.model.Award;
 
 /**
  * @author Forest

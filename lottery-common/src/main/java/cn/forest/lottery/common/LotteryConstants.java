@@ -11,7 +11,8 @@ public class LotteryConstants {
          * 优惠券类型奖品
          */
         CouponGoods(0),
-            PhysicalGoods(1),
+        PhysicalGoods(1),
+        Other(2),
         ;
 
         private final int code;

@@ -1,26 +1,25 @@
 package cn.forest.lottery.infrastructure.repository.iml;
 
-import cn.forest.lottery.infrastructure.po.UserTakeActivity;
 import cn.forest.lottery.infrastructure.dao.UserTakeActivityDao;
-import cn.forest.lottery.infrastructure.repository.UserTakeActivityRepository;
+import cn.forest.lottery.infrastructure.po.UserTakeActivityPo;
 import cn.forest.util.dbrouter.annotation.DBRouter;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.Resource;
 
 /**
- * <p>
- * 用户参与活动记录表 服务实现类
- * </p>
- *
  * @author Forest
- * @since 2023-03-14
+ * @date 2023/3/15 13:14
  */
-@Service
-public class UserTakeActivityRepositoryImpl extends ServiceImpl<UserTakeActivityDao, UserTakeActivity> implements UserTakeActivityRepository {
+@Repository
+public class UserTakeActivityRepositoryImpl {
+    @Resource
+    UserTakeActivityDao userTakeActivityDao;
 
     @DBRouter(key = "uId")
-    @Override
-    public void create(UserTakeActivity userTakeActivity) {
-        save(userTakeActivity);
+    @Transactional
+    public boolean create(UserTakeActivityPo userTakeActivityPo) {
+        return userTakeActivityDao.insert(userTakeActivityPo) == 1;
     }
 }

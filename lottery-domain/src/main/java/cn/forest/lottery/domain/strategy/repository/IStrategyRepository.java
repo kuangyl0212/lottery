@@ -1,8 +1,9 @@
 package cn.forest.lottery.domain.strategy.repository;
 
+import cn.forest.lottery.domain.award.model.Award;
 import cn.forest.lottery.domain.strategy.model.StrategyAggregate;
-import cn.forest.lottery.infrastructure.po.Award;
-import cn.forest.lottery.infrastructure.po.StrategyDetail;
+import cn.forest.lottery.domain.strategy.model.StrategyDetail;
+
 
 import java.util.List;
 
