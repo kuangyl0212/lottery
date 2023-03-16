@@ -1,11 +1,10 @@
 package cn.forest.lottery.infrastructure.util;
 
+import cn.forest.lottery.domain.activity.model.ActivityBillVO;
 import cn.forest.lottery.domain.strategy.model.Strategy;
 import cn.forest.lottery.domain.strategy.model.StrategyDetail;
 import cn.forest.lottery.domain.award.model.Award;
-import cn.forest.lottery.infrastructure.po.AwardPo;
-import cn.forest.lottery.infrastructure.po.StrategyDetailPo;
-import cn.forest.lottery.infrastructure.po.StrategyPo;
+import cn.forest.lottery.infrastructure.po.*;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -25,4 +24,8 @@ public interface DataConverter {
     List<StrategyDetail> toDo(List<StrategyDetailPo> strategyDetails);
 
     Award toDo(AwardPo po);
+
+    ActivityBillVO toVo(UserTakeActivityCountPo po);
+
+    ActivityBillVO toVo(ActivityPo activityPo);
 }

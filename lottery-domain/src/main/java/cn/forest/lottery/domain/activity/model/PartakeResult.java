@@ -9,6 +9,7 @@ import lombok.Data;
 @Data
 public class PartakeResult {
     Long strategyId;
+    Long takeId;
 
     public PartakeResult(Integer code, String info) {
 

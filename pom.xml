@@ -14,6 +14,7 @@
         <module>lottery-domain</module>
         <module>lottery-infrastructure</module>
         <module>lottery-common</module>
+        <module>lottery-application</module>
     </modules>
 
     <parent>

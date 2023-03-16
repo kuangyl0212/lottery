@@ -9,26 +9,31 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>lottery-domain</artifactId>
+    <artifactId>lottery-application</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>cn.forest.lottery</groupId>
-            <artifactId>lottery-rpc</artifactId>
+            <artifactId>lottery-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.forest.lottery</groupId>
+            <artifactId>lottery-domain</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>cn.forest.lottery</groupId>
-            <artifactId>lottery-common</artifactId>
+            <artifactId>lottery-infrastructure</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-
     </dependencies>
 
 </project>

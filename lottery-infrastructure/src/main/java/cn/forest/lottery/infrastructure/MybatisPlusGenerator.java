@@ -43,6 +43,7 @@ public class MybatisPlusGenerator {
                         )
 //                        .serviceBuilder().formatServiceFileName("%sRepository")
 //                            .formatServiceImplFileName("%sRepositoryImpl")
+                        .entityBuilder().formatFileName("%sPo")
                         .mapperBuilder().formatMapperFileName("%sDao")
                         .formatXmlFileName("%sDao")
                         .build())

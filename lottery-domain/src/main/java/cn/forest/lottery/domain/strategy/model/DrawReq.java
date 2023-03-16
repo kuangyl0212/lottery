@@ -10,4 +10,14 @@ import lombok.Data;
 @Data
 public class DrawReq {
     Long strategyId;
+    Long takeId;
+
+    public DrawReq(Long strategyId, Long takeId) {
+        this.strategyId = strategyId;
+        this.takeId = takeId;
+    }
+
+    public DrawReq() {
+
+    }
 }

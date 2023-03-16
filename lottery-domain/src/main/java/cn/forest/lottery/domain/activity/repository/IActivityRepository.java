@@ -1,6 +1,7 @@
 package cn.forest.lottery.domain.activity.repository;
 
 import cn.forest.lottery.common.LotteryConstants;
+import cn.forest.lottery.domain.activity.model.ActivityBillVO;
 
 /**
  * @author Forest
@@ -8,4 +9,6 @@ import cn.forest.lottery.common.LotteryConstants;
  */
 public interface IActivityRepository {
     boolean updateState(Long activityId, Enum<LotteryConstants.ActivityState> currentState, Enum<LotteryConstants.ActivityState> newState);
+
+    ActivityBillVO queryActivityBill(Long activityId, String uId);
 }

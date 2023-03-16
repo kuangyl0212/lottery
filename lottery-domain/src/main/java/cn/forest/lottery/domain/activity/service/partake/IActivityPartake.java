@@ -10,4 +10,7 @@ import cn.forest.lottery.domain.activity.model.PartakeResult;
 public interface IActivityPartake {
 
     PartakeResult doPartake(PartakeReq partakeReq);
+
+
+    void recordDrawOrder(Object buildDrawOrder);
 }
