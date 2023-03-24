@@ -1,7 +1,5 @@
 package cn.forest.lottery.interfaces;
 
-import cn.forest.lottery.common.LotteryConstants;
-import cn.forest.lottery.domain.activity.model.Result;
 import cn.forest.lottery.infrastructure.po.UserStrategyExportPo;
 import cn.forest.lottery.infrastructure.po.UserTakeActivityPo;
 import cn.forest.lottery.infrastructure.repository.iml.UserStrategyExportRepositoryImpl;

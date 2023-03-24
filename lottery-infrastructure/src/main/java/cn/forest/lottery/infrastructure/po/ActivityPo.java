@@ -60,6 +60,10 @@ public class ActivityPo implements Serializable {
      */
     private Integer stockCount;
 
+    private Integer stockSurplusCount;
+
+    private Long strategyId;
+
     /**
      * 每人可参与次数
      */

@@ -46,10 +46,10 @@ public class StrategyRepositoryImpl implements IStrategyRepository {
     }
 
     @Override
-    public Award queryAwardInfoByAwardId(String awardId) {
+    public Award queryAwardByAwardId(String awardId) {
         AwardPo po = awardDao.selectOne(
                 Wrappers.lambdaQuery(AwardPo.class)
-                        .eq(AwardPo::getAwardId, awardDao));
+                        .eq(AwardPo::getAwardId, awardId));
         return DataConverter.INSTANCE.toDo(po);
     }
 

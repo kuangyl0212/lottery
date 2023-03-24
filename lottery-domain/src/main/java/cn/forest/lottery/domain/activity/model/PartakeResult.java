@@ -10,8 +10,11 @@ import lombok.Data;
 public class PartakeResult {
     Long strategyId;
     Long takeId;
+    Integer code;
+    String info;
 
     public PartakeResult(Integer code, String info) {
-
+        this.code = code;
+        this.info = info;
     }
 }

@@ -1,10 +1,12 @@
 package cn.forest.lottery.domain.strategy.service.draw;
 
+import cn.forest.lottery.domain.award.model.Award;
 import cn.forest.lottery.domain.strategy.model.*;
 import cn.forest.lottery.domain.strategy.model.vo.AwardRateInfo;
 import cn.forest.lottery.domain.strategy.service.algorithm.IDrawAlgorithm;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -35,6 +37,19 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
         boolean isSuccess = strategyRepository.decreaseStock(strategyId, awardId);
         DrawResult res = new DrawResult();
         res.setAwardId(awardId);
+
+        Award award = this.queryAwardByAwardId(awardId);
+
+        AwardInfo awardInfo = new AwardInfo();
+        awardInfo.setAwardId(awardId);
+        awardInfo.setAwardName(award.getAwardName());
+        awardInfo.setAwardContent(award.getAwardContent());
+        awardInfo.setAwardType(awardInfo.getAwardType());
+        awardInfo.setStrategyMode(strategyAggregate.getStrategyMode());
+        awardInfo.setGrantDate(new Date());
+
+        res.setDrawAwardInfo(awardInfo);
+
         return res;
     }
 

@@ -1,7 +1,7 @@
 package cn.forest.lottery.interfaces;
 
 import cn.forest.lottery.common.LotteryConstants;
-import cn.forest.lottery.domain.activity.model.Result;
+import cn.forest.lottery.common.Result;
 import cn.forest.lottery.domain.activity.repository.IActivityRepository;
 import cn.forest.lottery.domain.activity.service.state.IStateHandler;
 import cn.forest.lottery.domain.award.model.Award;
@@ -12,12 +12,6 @@ import cn.forest.lottery.domain.strategy.service.draw.IDrawExec;
 import cn.forest.lottery.domain.strategy.model.DrawReq;
 import cn.forest.lottery.domain.strategy.model.DrawResult;
 import cn.forest.lottery.domain.support.ids.IIdGenerator;
-import cn.forest.lottery.infrastructure.po.UserStrategyExportPo;
-import cn.forest.lottery.infrastructure.po.UserTakeActivityPo;
-import cn.forest.lottery.infrastructure.repository.iml.UserStrategyExportRepositoryImpl;
-import cn.forest.lottery.infrastructure.repository.iml.UserTakeActivityRepositoryImpl;
-import cn.forest.util.dbrouter.DbRouterConfig;
-import com.github.jsonzou.jmockdata.JMockData;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;

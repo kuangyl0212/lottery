@@ -19,7 +19,7 @@ public interface IStrategyRepository {
      */
     StrategyAggregate queryStrategyAggregateById(Long strategyId);
 
-    Award queryAwardInfoByAwardId(String awardId);
+    Award queryAwardByAwardId(String awardId);
 
     List<StrategyDetail> queryNonStockAwardIds(Long strategyId);
 

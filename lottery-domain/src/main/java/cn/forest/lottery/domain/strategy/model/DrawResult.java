@@ -12,5 +12,5 @@ public class DrawResult {
 
     String awardId;
 
-    DrawAwardInfo drawAwardInfo;
+    AwardInfo drawAwardInfo;
 }

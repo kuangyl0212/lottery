@@ -70,7 +70,15 @@ public class LotteryConstants {
     }
 
     public enum ResponseCode {
+        /**
+         *
+         */
         SUCCESS(0, "ok"),
+        NOT_START_OR_END(1, "活动没开始或已结束"),
+        NO_STOCK(2, "活动无库存"),
+        NO_LEFT_COUNT(3, "用户无剩余抽奖次数"),
+        NOT_UPDATE(4, "扣取个人抽奖次数失败"),
+        DUP_IDX(5, "唯一索引校验失败"),
         ;
 
         private final Integer code;
@@ -87,6 +95,25 @@ public class LotteryConstants {
 
         public String getInfo() {
             return info;
+        }
+    }
+
+    public enum TakeState {
+        /**
+         *
+         */
+        UNUSED(0),
+        ;
+
+        private final Integer code;
+
+        TakeState(int i) {
+            code = i;
+        }
+
+
+        public Integer getCode() {
+            return code;
         }
     }
 }

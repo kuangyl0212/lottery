@@ -1,7 +1,7 @@
 package cn.forest.lottery.domain.activity.service.state;
 
 import cn.forest.lottery.common.LotteryConstants;
-import cn.forest.lottery.domain.activity.model.Result;
+import cn.forest.lottery.common.Result;
 import org.springframework.stereotype.Component;
 
 /**

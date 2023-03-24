@@ -11,4 +11,6 @@ public interface IActivityRepository {
     boolean updateState(Long activityId, Enum<LotteryConstants.ActivityState> currentState, Enum<LotteryConstants.ActivityState> newState);
 
     ActivityBillVO queryActivityBill(Long activityId, String uId);
+
+    void subtractActivityStock(Long activityId);
 }

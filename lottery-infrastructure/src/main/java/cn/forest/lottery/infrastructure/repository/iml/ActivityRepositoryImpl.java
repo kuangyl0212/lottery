@@ -9,7 +9,9 @@ import cn.forest.lottery.infrastructure.dao.UserTakeActivityDao;
 import cn.forest.lottery.infrastructure.po.ActivityPo;
 import cn.forest.lottery.infrastructure.po.UserTakeActivityCountPo;
 import cn.forest.lottery.infrastructure.util.DataConverter;
+import cn.forest.lottery.infrastructure.util.IncrDecrLambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,7 +22,7 @@ import javax.annotation.Resource;
  * @date 2023/3/15 12:26
  */
 @Repository
-public class ActivityRepositoryImpl implements IActivityRepository {
+public class ActivityRepositoryImpl extends ServiceImpl<ActivityDao, ActivityPo> implements IActivityRepository {
 
     @Resource
     ActivityDao activityDao;
@@ -56,6 +58,13 @@ public class ActivityRepositoryImpl implements IActivityRepository {
         res.setUId(uId);
         res.setUserTakeLeftCount(activityCountPo != null ? activityCountPo.getLeftCount(): null);
         return res;
+    }
+
+    @Override
+    public void subtractActivityStock(Long activityId) {
+        this.update(new IncrDecrLambdaUpdateWrapper<>(ActivityPo.class)
+                .descField(ActivityPo::getStockSurplusCount, 1)
+                .eq(ActivityPo::getActivityId, activityId));
     }
 
     private ActivityPo queryByActivityId(Long activityId) {

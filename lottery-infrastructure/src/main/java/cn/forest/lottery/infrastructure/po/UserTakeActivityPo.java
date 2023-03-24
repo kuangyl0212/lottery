@@ -28,12 +28,14 @@ public class UserTakeActivityPo implements Serializable {
     private Long takeId;
 
     private Long activityId;
+    private Long strategyId;
 
     private String activityName;
 
     private LocalDateTime takeDate;
 
     private Integer takeCount;
+    private Integer state;
 
     private String uuid;
 

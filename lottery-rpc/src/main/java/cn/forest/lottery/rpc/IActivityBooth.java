@@ -1,8 +1,8 @@
 package cn.forest.lottery.rpc;
 
-import cn.forest.lottery.rpc.req.ActivityReq;
-import cn.forest.lottery.rpc.res.ActivityRes;
+import cn.forest.lottery.rpc.req.DrawReq;
+import cn.forest.lottery.rpc.res.DrawRes;
 
 public interface IActivityBooth {
-    ActivityRes queryActivityById(ActivityReq req);
+    DrawRes doDraw(DrawReq req);
 }

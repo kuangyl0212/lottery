@@ -4,6 +4,7 @@ import cn.forest.lottery.domain.activity.model.ActivityBillVO;
 import cn.forest.lottery.domain.strategy.model.Strategy;
 import cn.forest.lottery.domain.strategy.model.StrategyDetail;
 import cn.forest.lottery.domain.award.model.Award;
+import cn.forest.lottery.domain.strategy.model.vo.DrawOrderVo;
 import cn.forest.lottery.infrastructure.po.*;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -28,4 +29,6 @@ public interface DataConverter {
     ActivityBillVO toVo(UserTakeActivityCountPo po);
 
     ActivityBillVO toVo(ActivityPo activityPo);
+
+    UserStrategyExportPo toDo(DrawOrderVo orderVo);
 }

@@ -32,6 +32,8 @@ public class ActivityBillVO {
      */
     private Integer totalCount;
 
+    private Integer stockSurplusCount;
+
     /**
      * 已领取次数
      */

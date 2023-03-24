@@ -1,4 +1,4 @@
-package cn.forest.lottery.domain.activity.model;
+package cn.forest.lottery.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
