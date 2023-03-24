@@ -57,7 +57,7 @@ public class StrategyRepositoryImpl implements IStrategyRepository {
     public List<StrategyDetail> queryNonStockAwardIds(Long strategyId) {
         List<StrategyDetailPo> pos = strategyDetailDao.selectList(Wrappers.lambdaQuery(StrategyDetailPo.class)
                 .eq(StrategyDetailPo::getStrategyId, strategyId)
-                .gt(StrategyDetailPo::getAwardSurplusCount, 0));
+                .lt(StrategyDetailPo::getAwardSurplusCount, 0));
         return DataConverter.INSTANCE.toDo(pos);
     }
 

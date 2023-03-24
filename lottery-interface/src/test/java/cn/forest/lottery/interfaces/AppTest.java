@@ -22,9 +22,14 @@ public class AppTest {
 
     @Test
     void testActivityProcess() {
-        DrawProcessReq req = new DrawProcessReq();
-        req.setActivityId(100001L);
-        req.setUId("Uhdgkw766120d");
-        DrawProcessResult res = activityProcess.doDrawProcess(req);
+
+        int n = 100;
+        while (n -- > 0) {
+
+            DrawProcessReq req = new DrawProcessReq();
+            req.setActivityId(100001L);
+            req.setUId("Uhdgkw766120d");
+            DrawProcessResult res = activityProcess.doDrawProcess(req);
+        }
     }
 }
